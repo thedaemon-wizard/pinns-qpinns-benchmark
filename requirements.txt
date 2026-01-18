@@ -1,0 +1,27 @@
+# PINNs vs QPINNs Benchmark
+# 3D Heat Conduction Equation
+# Optimizers: RAdam (PINN) vs SPSA (QPINN)
+# With GQE-GPT Circuit Generation
+
+# Core dependencies
+numpy>=1.21.0
+torch>=2.0.0
+scipy>=1.7.0
+
+# Quantum computing
+pennylane>=0.43.0
+
+# GQE-GPT dependencies
+transformers>=4.30.0
+scikit-learn>=1.0.0
+
+# Visualization
+matplotlib>=3.5.0
+
+# Optional: GPU support for PennyLane
+# pip install pennylane-lightning-gpu
+
+# Development dependencies (optional)
+# pytest>=7.0.0
+# black>=23.0.0
+# isort>=5.12.0

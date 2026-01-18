@@ -1,0 +1,110 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pinns-qpinns-benchmark"
+version = "1.0.0"
+description = "Benchmark comparing Physics-Informed Neural Networks with Quantum Physics-Informed Neural Networks"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = [
+    "physics-informed neural networks",
+    "quantum computing",
+    "quantum machine learning",
+    "heat equation",
+    "PDE solver",
+    "variational quantum circuits",
+    "GQE",
+    "GPT",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Physics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=1.21.0",
+    "torch>=2.0.0",
+    "pennylane>=0.43.0",
+    "matplotlib>=3.5.0",
+    "scipy>=1.7.0",
+    "transformers>=4.30.0",
+    "scikit-learn>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+]
+gpu = [
+    "pennylane-lightning-gpu",
+]
+
+[project.scripts]
+pinns-qpinns-benchmark = "main:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/pinns-qpinns-benchmark"
+Documentation = "https://github.com/yourusername/pinns-qpinns-benchmark#readme"
+Repository = "https://github.com/yourusername/pinns-qpinns-benchmark"
+Issues = "https://github.com/yourusername/pinns-qpinns-benchmark/issues"
+
+[tool.setuptools]
+py-modules = [
+    "main",
+    "config", 
+    "data_utils",
+    "pinn_model",
+    "qpinn_model",
+    "gpt_model",
+    "energy_estimator",
+    "gqe_generator",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | results_*
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_gitignore = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
