@@ -321,36 +321,6 @@ def analytical_solution(x, y, z, t, n_terms=10):
     return gauss_term * boundary_effect
 
 
-def analytical_solution_simple(x, y, z, t):
-    """
-    Simplified analytical approximation for visualization
-    Same as analytical_solution but uses smooth boundary function
-    """
-    if t < 1e-10:
-        return initial_condition(x, y, z)
-    
-    x0, y0, z0 = L/2, L/2, L/2
-    
-    # Time-evolving sigma
-    sigma_t = np.sqrt(sigma_0**2 + 2 * alpha * t)
-    
-    # 3D amplitude decay
-    amplitude = (sigma_0 / sigma_t)**3
-    
-    # Gaussian profile
-    r_sq = (x - x0)**2 + (y - y0)**2 + (z - z0)**2
-    u = amplitude * np.exp(-r_sq / (2 * sigma_t**2))
-    
-    # Apply smooth boundary decay for Dirichlet BC approximation
-    # Use softer boundary effect that doesn't affect interior much
-    dist_from_boundaries = min(x, L-x, y, L-y, z, L-z)
-    if dist_from_boundaries < 0.1 * L:
-        boundary_effect = dist_from_boundaries / (0.1 * L)
-    else:
-        boundary_effect = 1.0
-    
-    return u * boundary_effect
-
 
 #================================================
 # Utility functions
